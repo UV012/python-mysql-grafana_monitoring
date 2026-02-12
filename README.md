@@ -135,15 +135,26 @@ Add:
 
 ## 📊 Grafana Dashboard Setup
 
-1️⃣ Install Grafana
+### 1️⃣ Install Grafana
+```
+sudo apt install -y grafana
+sudo systemctl start grafana-server
+sudo systemctl enable grafana-server
+```
+Access:
+```
+http://localhost:3000
+```
+Login:
+`admin / admin`
 
-2️⃣ Add MySQL as Data Source
+### 2️⃣ Add MySQL as Data Source
    * Host: localhost:3306
    * Database: mysql-grafana_monitoring
    * User: user
    * Password: YourPassword
 
-3️⃣ Create Panel with query:
+### 3️⃣ Create Panel with query:
 ```
 SELECT
   created_at as time,
@@ -153,22 +164,22 @@ FROM system_metrics
 ORDER BY created_at DESC
 ```
 
-4️⃣ Set visualization type:
-    * Time Series
-    * Add two fields:
-      _ CPU Usage
-      _ Memory Usage
+### 4️⃣ Set visualization type:
+* Time Series
+* Add two fields:
+  * CPU Usage
+  * Memory Usage
 
 ## 📄 Logging
-Logs stored at:
+### Logs stored at:
 
 ` /opt/python-mysql-grafana_monitoring/logs/metrics.log `
 
-Example log entry:
+### Example log entry:
 
 ` 2026-02-12 10:21:01 INFO Inserted CPU=23.5 MEMORY=41.2 `
 
-If any exception occurs, it will be logged as:
+### If any exception occurs, it will be logged as:
 
 ` ERROR <error_message> `
 
